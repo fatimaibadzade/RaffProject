@@ -1,6 +1,10 @@
 .navbar {
-  border-bottom: 1px solid #111;
-  background: #fff;
+  border-bottom: 1px solid #ddd3c7;
+  background: rgba(255, 252, 247, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  backdrop-filter: blur(8px);
 }
 
 .top-line {
@@ -9,10 +13,12 @@
   align-items: center;
   padding: 10px 14px;
   font-size: 10px;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.8px;
   font-weight: 700;
   text-transform: uppercase;
-  border-bottom: 1px solid #111;
+  border-bottom: 1px solid #e2d8cc;
+  background: #fffcf7;
+  color: #61564a;
 }
 
 .nav-links {
@@ -22,14 +28,54 @@
 
 .nav-links a {
   text-decoration: none;
-  color: #111;
+  color: #3c332c;
   font-size: 10px;
-  letter-spacing: 1.4px;
+  letter-spacing: 1.5px;
   text-align: center;
   padding: 10px 4px;
-  border-right: 1px solid #111;
+  border-right: 1px solid #e2d8cc;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.nav-links a:hover {
+  background: #f2e8dd;
+  color: #2d251f;
+  transform: translateY(-1px);
 }
 
 .nav-links a:last-child {
+  border-right: 0;
+}
+
+.auth-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid #e2d8cc;
+}
+
+.auth-links a,
+.auth-links button {
+  border: 0;
+  border-right: 1px solid #e2d8cc;
+  text-decoration: none;
+  color: #5a4f44;
+  background: #fffcf7;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  padding: 8px 4px;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.auth-links a:hover,
+.auth-links button:hover {
+  background: #f2e8dd;
+  color: #2d251f;
+  transform: translateY(-1px);
+}
+
+.auth-links a:last-child,
+.auth-links button:last-child {
   border-right: 0;
 }

@@ -1,8 +1,20 @@
 .app-shell {
   max-width: 430px;
-  margin: 0 auto;
-  background: #fff;
+  margin: 18px auto;
+  background: #fffdf9;
   min-height: 100vh;
-  border-left: 1px solid #111;
-  border-right: 1px solid #111;
+  border: 1px solid #d7cfc5;
+  box-shadow:
+    0 16px 40px rgba(68, 49, 29, 0.12),
+    0 0 0 1px rgba(255, 255, 255, 0.45) inset;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+@media (max-width: 520px) {
+  .app-shell {
+    margin: 0;
+    border: 0;
+    box-shadow: none;
+  }
 }
