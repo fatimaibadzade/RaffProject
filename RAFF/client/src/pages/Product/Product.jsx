@@ -34,7 +34,7 @@ function Product() {
           <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
             <button onClick={() => addToCart(product.id)}>Add To Cart</button>
             <button onClick={() => toggleWishlist(product.id)}>
-              {isWishlisted ? "Remove Wishlist" : "Add Wishlist"}
+              {isWishlisted ? "♥ In Wishlist" : "♡ Wishlist"}
             </button>
           </div>
         </div>

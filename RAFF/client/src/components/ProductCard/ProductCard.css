@@ -1,17 +1,25 @@
 .product-card {
-  border: 1px solid #eee;
+  border: 1px solid #e9dfd2;
+  border-radius: 14px;
   padding: 16px;
-  transition: 0.3s;
+  transition: 0.25s ease;
+  background: #fff;
 }
 
 .product-card:hover {
   transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(99, 74, 48, 0.12);
+}
+
+.product-media {
+  position: relative;
 }
 
 .product-card img {
   width: 100%;
   height: 220px;
   object-fit: cover;
+  border-radius: 10px;
 }
 
 .product-card h3 {
@@ -25,7 +33,39 @@
 }
 
 .card-actions button {
-  flex: 1;
-  padding: 8px;
+  padding: 8px 12px;
   font-size: 12px;
+  border: 1px solid #d8cbbd;
+  background: #fff7ef;
+  color: #3d3227;
+}
+
+.wishlist-heart {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  border: 1px solid #e5d8cb;
+  background: rgba(255, 255, 255, 0.92);
+  color: #af9e8a;
+  font-size: 15px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+  padding: 0;
+}
+
+.wishlist-heart.active {
+  color: #d93939;
+  border-color: #efb1b1;
+  background: #fff2f2;
+}
+
+.wishlist-heart:hover {
+  transform: scale(1.06);
 }

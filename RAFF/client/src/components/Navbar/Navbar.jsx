@@ -16,13 +16,21 @@ function Navbar() {
       <nav className="nav-links">
         <Link to="/">NEW DROP</Link>
         <Link to="/shop">SHOP</Link>
-        <Link to="/wishlist">WISHLIST ({wishlist.length})</Link>
-        <Link to="/cart">CART ({cartCount})</Link>
+        <Link to="/wishlist">
+          WISHLIST <span className="count-badge">{wishlist.length}</span>
+        </Link>
+        <Link to="/cart">
+          CART <span className="count-badge">{cartCount}</span>
+        </Link>
       </nav>
       <nav className="auth-links">
-        <Link to="/login">LOGIN</Link>
-        <Link to="/register">REGISTER</Link>
-        <button onClick={logout} type="button">
+        <Link to="/login" className="auth-pill">
+          LOGIN
+        </Link>
+        <Link to="/register" className="auth-pill">
+          REGISTER
+        </Link>
+        <button onClick={logout} type="button" className="auth-pill">
           LOGOUT
         </button>
       </nav>

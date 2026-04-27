@@ -35,6 +35,10 @@
   padding: 10px 4px;
   border-right: 1px solid #e2d8cc;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
 .nav-links a:hover {
@@ -48,24 +52,28 @@
 }
 
 .auth-links {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
   border-top: 1px solid #e2d8cc;
+  padding: 8px 12px;
+  background: #fffaf3;
 }
 
 .auth-links a,
 .auth-links button {
-  border: 0;
-  border-right: 1px solid #e2d8cc;
+  border: 1px solid #e2d8cc;
   text-decoration: none;
   color: #5a4f44;
-  background: #fffcf7;
+  background: #fff;
   font-size: 10px;
   letter-spacing: 1.5px;
   text-align: center;
-  padding: 8px 4px;
+  padding: 7px 12px;
   cursor: pointer;
   transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+  border-radius: 999px;
+  min-width: 78px;
 }
 
 .auth-links a:hover,
@@ -75,7 +83,26 @@
   transform: translateY(-1px);
 }
 
-.auth-links a:last-child,
-.auth-links button:last-child {
-  border-right: 0;
+.count-badge {
+  min-width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  border: 1px solid #d9cdbf;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 9px;
+  line-height: 1;
+  background: #fff8ef;
+}
+
+@media (max-width: 620px) {
+  .top-line {
+    font-size: 9px;
+  }
+
+  .auth-links {
+    justify-content: center;
+    flex-wrap: wrap;
+  }
 }
