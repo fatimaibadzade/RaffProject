@@ -4,13 +4,12 @@ function Footer() {
   return (
     <footer className="footer">
       <h2>RAPNATION</h2>
-      <p>Where style meets the rhythm.</p>
-
+      <p>WHERE STYLE MEETS THE RHYTHM</p>
       <div className="footer-links">
-        <span>Shop</span>
-        <span>Contact</span>
-        <span>Instagram</span>
-        <span>TikTok</span>
+        <span>SHOP</span>
+        <span>LOOKBOOK</span>
+        <span>ABOUT</span>
+        <span>CONTACT</span>
       </div>
     </footer>
   );

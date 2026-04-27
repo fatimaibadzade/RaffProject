@@ -1,27 +1,46 @@
+import { useMemo } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
+import { useStore } from "../../context/StoreContext";
+
 function Product() {
-    return (
-      <section className="container" style={{ padding: "60px 0" }}>
-        <div style={{ display: "flex", gap: "40px" }}>
-          <img
-            src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"
-            alt="product"
-            style={{ width: "400px", objectFit: "cover" }}
-          />
-  
-          <div>
-            <h1>Black Hoodie</h1>
-            <p style={{ margin: "20px 0" }}>$90</p>
-            <p>
-              Premium streetwear hoodie inspired by music, fashion and city life.
-            </p>
-  
-            <button style={{ marginTop: "20px" }}>
-              Add To Cart
+  const { id } = useParams();
+  const [searchParams] = useSearchParams();
+  const { products, addToCart, toggleWishlist, wishlist } = useStore();
+
+  const requestedId = Number(id ?? searchParams.get("id") ?? products[0]?.id);
+  const product = useMemo(
+    () => products.find((item) => item.id === requestedId) ?? products[0],
+    [products, requestedId]
+  );
+
+  if (!product) return null;
+
+  const isWishlisted = wishlist.includes(product.id);
+
+  return (
+    <section className="container" style={{ padding: "60px 0" }}>
+      <div style={{ display: "flex", gap: "40px", alignItems: "flex-start" }}>
+        <img
+          src={product.image}
+          alt={product.name}
+          style={{ width: "400px", maxWidth: "100%", objectFit: "cover" }}
+        />
+
+        <div>
+          <h1>{product.name}</h1>
+          <p style={{ margin: "20px 0" }}>${product.price}</p>
+          <p>{product.description}</p>
+
+          <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
+            <button onClick={() => addToCart(product.id)}>Add To Cart</button>
+            <button onClick={() => toggleWishlist(product.id)}>
+              {isWishlisted ? "Remove Wishlist" : "Add Wishlist"}
             </button>
           </div>
         </div>
-      </section>
-    );
-  }
-  
-  export default Product;
+      </div>
+    </section>
+  );
+}
+
+export default Product;

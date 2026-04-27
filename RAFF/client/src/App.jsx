@@ -13,29 +13,25 @@ import Home from "./pages/Home/Home";
 import './App.css'
 
 function App() {
-
-
   return (
-    <>
+    <div className="app-shell">
       <BrowserRouter>
         <Navbar />
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/shop" element={<Shop />} />
           <Route path="/product" element={<Product />} />
+          <Route path="/product/:id" element={<Product />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-           
         </Routes>
-
         <Footer />
       </BrowserRouter>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

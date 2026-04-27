@@ -1,12 +1,20 @@
 import "./ProductCard.css";
+import { Link } from "react-router-dom";
 
-function ProductCard({ product }) {
+function ProductCard({ product, onAddToCart, onToggleWishlist, isWishlisted }) {
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.name} />
+      <Link to={`/product/${product.id}`}>
+        <img src={product.image} alt={product.name} />
+      </Link>
       <h3>{product.name}</h3>
       <p>${product.price}</p>
-      <button>Add to Cart</button>
+      <div className="card-actions">
+        <button onClick={() => onAddToCart?.(product.id)}>Add to Cart</button>
+        <button onClick={() => onToggleWishlist?.(product.id)}>
+          {isWishlisted ? "In Wishlist" : "Wishlist"}
+        </button>
+      </div>
     </div>
   );
 }
