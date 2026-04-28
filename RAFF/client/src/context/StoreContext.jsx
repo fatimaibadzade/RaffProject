@@ -1,11 +1,13 @@
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { PRODUCTS } from "../data/products";
+import { apiRequest } from "../lib/api";
 
 const StoreContext = createContext(null);
 
 const CART_KEY = "raff_cart";
 const WISHLIST_KEY = "raff_wishlist";
 const USER_KEY = "raff_user";
+const TOKEN_KEY = "raff_token";
 
 function readStorage(key, fallback) {
   try {
@@ -24,6 +26,40 @@ export function StoreProvider({ children }) {
   const [cart, setCart] = useState(() => readStorage(CART_KEY, []));
   const [wishlist, setWishlist] = useState(() => readStorage(WISHLIST_KEY, []));
   const [currentUser, setCurrentUser] = useState(() => readStorage(USER_KEY, null));
+  const [token, setToken] = useState(() => readStorage(TOKEN_KEY, ""));
+  const [authLoading, setAuthLoading] = useState(false);
+
+  useEffect(() => {
+    if (token) {
+      writeStorage(TOKEN_KEY, token);
+    } else {
+      localStorage.removeItem(TOKEN_KEY);
+    }
+  }, [token]);
+
+  useEffect(() => {
+    async function restoreSession() {
+      if (!token) {
+        return;
+      }
+
+      try {
+        const payload = await apiRequest("/auth/me", {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        setCurrentUser(payload.user);
+        writeStorage(USER_KEY, payload.user);
+      } catch {
+        setCurrentUser(null);
+        setToken("");
+        localStorage.removeItem(USER_KEY);
+      }
+    }
+
+    restoreSession();
+  }, [token]);
 
   const addToCart = (productId) => {
     setCart((prev) => {
@@ -68,15 +104,45 @@ export function StoreProvider({ children }) {
     });
   };
 
-  const login = (email) => {
-    const user = { email };
-    setCurrentUser(user);
-    writeStorage(USER_KEY, user);
+  const applyAuth = (payload) => {
+    setCurrentUser(payload.user);
+    setToken(payload.token);
+    writeStorage(USER_KEY, payload.user);
   };
 
-  const logout = () => {
+  const register = async ({ fullName, email, password }) => {
+    setAuthLoading(true);
+    try {
+      const payload = await apiRequest("/auth/register", {
+        method: "POST",
+        body: JSON.stringify({ fullName, email, password })
+      });
+      applyAuth(payload);
+      return payload;
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const login = async ({ email, password }) => {
+    setAuthLoading(true);
+    try {
+      const payload = await apiRequest("/auth/login", {
+        method: "POST",
+        body: JSON.stringify({ email, password })
+      });
+      applyAuth(payload);
+      return payload;
+    } finally {
+      setAuthLoading(false);
+    }
+  };
+
+  const logout = async () => {
     setCurrentUser(null);
+    setToken("");
     localStorage.removeItem(USER_KEY);
+    localStorage.removeItem(TOKEN_KEY);
   };
 
   const cartItemsDetailed = useMemo(
@@ -100,6 +166,8 @@ export function StoreProvider({ children }) {
     cart,
     wishlist,
     currentUser,
+    token,
+    authLoading,
     cartItemsDetailed,
     cartTotal,
     addToCart,
@@ -107,6 +175,7 @@ export function StoreProvider({ children }) {
     removeFromCart,
     clearCart,
     toggleWishlist,
+    register,
     login,
     logout
   };

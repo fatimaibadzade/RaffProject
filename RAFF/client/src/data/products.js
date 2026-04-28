@@ -13,7 +13,7 @@ export const PRODUCTS = [
     price: 55,
     image:
       "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80",
-    description: "Soft cotton oversized tee with clean RAPNATION graphics."
+    description: "Soft cotton oversized tee with clean RAF graphics."
   },
   {
     id: 3,

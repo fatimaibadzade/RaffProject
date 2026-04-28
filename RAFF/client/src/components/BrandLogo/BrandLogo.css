@@ -1,0 +1,68 @@
+.brand-logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  color: #1b1511;
+}
+
+.brand-logo--compact {
+  gap: 10px;
+}
+
+.brand-logo__mark {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+}
+
+.brand-logo__mark rect {
+  fill: #17110d;
+}
+
+.brand-logo__mark path {
+  fill: #fff8f2;
+}
+
+.brand-logo__text {
+  display: grid;
+}
+
+.brand-logo__eyebrow {
+  font-size: 0.66rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: #8a7058;
+}
+
+.brand-logo__text strong {
+  font-size: 1.45rem;
+  letter-spacing: 0.18em;
+  line-height: 1;
+}
+
+.brand-logo--compact .brand-logo__mark {
+  width: 46px;
+  height: 46px;
+}
+
+.brand-logo--compact .brand-logo__text strong {
+  font-size: 1.2rem;
+}
+
+.brand-logo--light {
+  color: #fff7f1;
+}
+
+.brand-logo--light .brand-logo__eyebrow {
+  color: rgba(255, 241, 230, 0.78);
+}
+
+.brand-logo--light .brand-logo__mark rect {
+  fill: rgba(255, 248, 242, 0.16);
+  stroke: rgba(255, 248, 242, 0.38);
+  stroke-width: 1.5;
+}
+
+.brand-logo--light .brand-logo__mark path {
+  fill: #fff8f2;
+}

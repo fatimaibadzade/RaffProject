@@ -1,15 +1,36 @@
 import "./Footer.css";
+import BrandLogo from "../BrandLogo/BrandLogo";
 
 function Footer() {
   return (
     <footer className="footer">
-      <h2>RAPNATION</h2>
-      <p>WHERE STYLE MEETS THE RHYTHM</p>
+      <div className="footer__intro">
+        <BrandLogo />
+        <p>
+          A cleaner storefront for curated streetwear, account access, and a more
+          premium shopping feel.
+        </p>
+      </div>
+
       <div className="footer-links">
-        <span>SHOP</span>
-        <span>LOOKBOOK</span>
-        <span>ABOUT</span>
-        <span>CONTACT</span>
+        <div>
+          <strong>Shop</strong>
+          <span>New arrivals</span>
+          <span>Best sellers</span>
+          <span>Wishlist</span>
+        </div>
+        <div>
+          <strong>Company</strong>
+          <span>About</span>
+          <span>Journal</span>
+          <span>Contact</span>
+        </div>
+        <div>
+          <strong>Support</strong>
+          <span>Delivery</span>
+          <span>Returns</span>
+          <span>Account</span>
+        </div>
       </div>
     </footer>
   );
