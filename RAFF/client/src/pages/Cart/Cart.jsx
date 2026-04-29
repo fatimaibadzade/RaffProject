@@ -15,9 +15,9 @@ function Cart() {
         <p>{t("cart.empty")}</p>
       ) : (
         <>
-          {cartItemsDetailed.map(({ product, quantity }) => (
+          {cartItemsDetailed.map(({ product, quantity, size }) => (
             <div
-              key={product.id}
+              key={`${product.id}-${size}`}
               style={{
                 display: "flex",
                 justifyContent: "space-between",
@@ -27,14 +27,16 @@ function Cart() {
                 padding: "12px 0"
               }}
             >
-              <span style={{ minWidth: "130px", textAlign: "left" }}>{product.name}</span>
+              <span style={{ minWidth: "160px", textAlign: "left" }}>
+                {product.name} <span style={{ opacity: 0.8, fontSize: 12 }}>({size.toUpperCase()})</span>
+              </span>
               <div style={{ display: "flex", gap: "6px", alignItems: "center" }}>
-                <button onClick={() => updateQuantity(product.id, quantity - 1)}>-</button>
+                <button onClick={() => updateQuantity(product.id, size, quantity - 1)}>-</button>
                 <span>{quantity}</span>
-                <button onClick={() => updateQuantity(product.id, quantity + 1)}>+</button>
+                <button onClick={() => updateQuantity(product.id, size, quantity + 1)}>+</button>
               </div>
               <span>${product.price * quantity}</span>
-              <button onClick={() => removeFromCart(product.id)}>{t("cart.remove")}</button>
+              <button onClick={() => removeFromCart(product.id, size)}>{t("cart.remove")}</button>
             </div>
           ))}
 
