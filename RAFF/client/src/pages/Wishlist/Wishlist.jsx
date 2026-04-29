@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+ import { useNavigate } from "react-router-dom";
 import { useStore } from "../../context/StoreContext";
 import { useUi } from "../../context/UiContext";
 import "./Wishlist.css";
@@ -7,7 +7,6 @@ function Wishlist() {
   const navigate = useNavigate();
   const { products, wishlist, toggleWishlist, addToCart } = useStore();
   const { t } = useUi();
-  const items = products.filter((product) => wishlist.includes(product.id))
 
   return (
     <section className="wishlist-page">
