@@ -1,35 +1,36 @@
 import "./Footer.css";
 import BrandLogo from "../BrandLogo/BrandLogo";
+import { useUi } from "../../context/UiContext";
 
 function Footer() {
+  const { t, theme } = useUi();
   return (
     <footer className="footer">
       <div className="footer__intro">
-        <BrandLogo />
+        <BrandLogo light={theme === "dark"} />
         <p>
-          A cleaner storefront for curated streetwear, account access, and a more
-          premium shopping feel.
+          {t("footer.intro")}
         </p>
       </div>
 
       <div className="footer-links">
         <div>
-          <strong>Shop</strong>
-          <span>New arrivals</span>
-          <span>Best sellers</span>
-          <span>Wishlist</span>
+          <strong>{t("footer.shop")}</strong>
+          <span>{t("footer.newArrivals")}</span>
+          <span>{t("footer.bestSellers")}</span>
+          <span>{t("navbar.wishlist")}</span>
         </div>
         <div>
-          <strong>Company</strong>
-          <span>About</span>
-          <span>Journal</span>
-          <span>Contact</span>
+          <strong>{t("footer.company")}</strong>
+          <span>{t("footer.about")}</span>
+          <span>{t("footer.journal")}</span>
+          <span>{t("footer.contact")}</span>
         </div>
         <div>
-          <strong>Support</strong>
-          <span>Delivery</span>
-          <span>Returns</span>
-          <span>Account</span>
+          <strong>{t("footer.support")}</strong>
+          <span>{t("footer.delivery")}</span>
+          <span>{t("footer.returns")}</span>
+          <span>{t("footer.account")}</span>
         </div>
       </div>
     </footer>

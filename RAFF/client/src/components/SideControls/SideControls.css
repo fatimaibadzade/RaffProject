@@ -1,0 +1,62 @@
+.side-controls {
+  position: fixed;
+  right: 10px;
+  top: 86px;
+  transform: none;
+  z-index: 999;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 10px 8px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.66);
+  border: 1px solid rgba(88, 69, 51, 0.16);
+  backdrop-filter: blur(10px);
+}
+
+.side-controls__btn {
+  min-width: 56px;
+  padding: 7px 10px;
+  border-radius: 12px;
+  background: rgba(31, 23, 17, 0.06);
+  border: 1px solid rgba(88, 69, 51, 0.18);
+  color: #2c2926;
+  font-weight: 800;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+.side-controls__btn:hover {
+  transform: translateY(-1px);
+  opacity: 0.96;
+}
+
+.side-controls__btn--active {
+  background: rgba(31, 23, 17, 0.88);
+  border-color: rgba(31, 23, 17, 0.88);
+  color: #fff8f3;
+}
+
+.side-controls__divider {
+  height: 1px;
+  width: 100%;
+  background: rgba(88, 69, 51, 0.18);
+}
+
+html[data-theme="dark"] .side-controls {
+  background: rgba(18, 13, 10, 0.65);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+html[data-theme="dark"] .side-controls__btn {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 248, 243, 0.92);
+}
+
+html[data-theme="dark"] .side-controls__divider {
+  background: rgba(255, 255, 255, 0.14);
+}
+

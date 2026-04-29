@@ -75,3 +75,34 @@
     flex: 1;
   }
 }
+
+html[data-theme="dark"] .wishlist-page {
+  color: rgba(255, 248, 243, 0.95);
+}
+
+html[data-theme="dark"] .wishlist-page h1 {
+  color: rgba(255, 248, 243, 0.95);
+}
+
+html[data-theme="dark"] .wishlist-empty {
+  color: rgba(233, 222, 209, 0.7);
+}
+
+html[data-theme="dark"] .wishlist-item {
+  border-color: rgba(255, 255, 255, 0.12);
+  background: rgba(21, 16, 12, 0.52);
+}
+
+html[data-theme="dark"] .wishlist-name {
+  color: rgba(255, 248, 243, 0.95);
+}
+
+html[data-theme="dark"] .wishlist-product p {
+  color: rgba(233, 222, 209, 0.75);
+}
+
+html[data-theme="dark"] .wishlist-actions button {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 248, 243, 0.06);
+  color: rgba(255, 248, 243, 0.95);
+}

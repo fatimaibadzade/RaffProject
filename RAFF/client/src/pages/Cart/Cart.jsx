@@ -1,16 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import { useStore } from "../../context/StoreContext";
+import { useUi } from "../../context/UiContext";
 
 function Cart() {
   const navigate = useNavigate();
   const { cartItemsDetailed, updateQuantity, removeFromCart, cartTotal } = useStore();
+  const { t } = useUi();
 
   return (
     <section style={{ padding: "60px 20px" }}>
-      <h1>Your Cart</h1>
+      <h1>{t("cart.h1")}</h1>
 
       {cartItemsDetailed.length === 0 ? (
-        <p>Your selected products will appear here.</p>
+        <p>{t("cart.empty")}</p>
       ) : (
         <>
           {cartItemsDetailed.map(({ product, quantity }) => (
@@ -32,11 +34,11 @@ function Cart() {
                 <button onClick={() => updateQuantity(product.id, quantity + 1)}>+</button>
               </div>
               <span>${product.price * quantity}</span>
-              <button onClick={() => removeFromCart(product.id)}>Remove</button>
+              <button onClick={() => removeFromCart(product.id)}>{t("cart.remove")}</button>
             </div>
           ))}
 
-          <p style={{ marginTop: "16px", fontWeight: 700 }}>Total: ${cartTotal}</p>
+          <p style={{ marginTop: "16px", fontWeight: 700 }}>{t("cart.total", { total: cartTotal })}</p>
         </>
       )}
 
@@ -45,7 +47,7 @@ function Cart() {
         disabled={cartItemsDetailed.length === 0}
         style={{ marginTop: "20px" }}
       >
-        Go To Checkout
+        {t("cart.goCheckout")}
       </button>
     </section>
   );

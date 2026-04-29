@@ -9,11 +9,39 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  background:
+:root {
+  --page-bg:
     radial-gradient(circle at top, rgba(215, 191, 168, 0.22), transparent 30%),
     linear-gradient(180deg, #f7f1ea 0%, #efe6dc 100%);
-  color: #111;
+  --page-text: #111;
+
+  --btn-bg: #000;
+  --btn-fg: #fff;
+  --btn-border: transparent;
+
+  --input-bg: #fff;
+  --input-text: #111;
+  --input-border: #ddd;
+}
+
+html[data-theme="dark"] {
+  --page-bg:
+    radial-gradient(circle at top, rgba(215, 191, 168, 0.12), transparent 30%),
+    linear-gradient(180deg, #16110d 0%, #0f0b08 100%);
+  --page-text: #f5efe8;
+
+  --btn-bg: rgba(255, 248, 243, 0.96);
+  --btn-fg: #17110d;
+  --btn-border: rgba(255, 248, 243, 0.18);
+
+  --input-bg: rgba(255, 255, 255, 0.06);
+  --input-text: rgba(255, 248, 243, 0.94);
+  --input-border: rgba(255, 255, 255, 0.18);
+}
+
+body {
+  background: var(--page-bg);
+  color: var(--page-text);
 }
 
 .container {
@@ -28,9 +56,9 @@ input {
 
 button {
   padding: 12px 24px;
-  border: none;
-  background: black;
-  color: white;
+  border: 1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--btn-fg);
   cursor: pointer;
   font-weight: 600;
   transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease;
@@ -45,7 +73,9 @@ input {
   width: 100%;
   padding: 14px;
   margin: 10px 0;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--input-text);
   outline: none;
 }
 

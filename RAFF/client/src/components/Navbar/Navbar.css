@@ -98,6 +98,111 @@
   color: #fff8f3;
 }
 
+.navbar-side-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+}
+
+.navbar-theme {
+  display: inline-flex;
+  gap: 8px;
+}
+
+.navbar-iconbtn {
+  width: 34px;
+  height: 34px;
+  border-radius: 12px;
+  border: 1px solid rgba(79, 65, 54, 0.18);
+  background: rgba(255, 255, 255, 0.7);
+  color: #4f4136;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+}
+
+.navbar-iconbtn:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+}
+
+.navbar-iconbtn--active {
+  background: rgba(143, 92, 50, 0.14);
+  border-color: rgba(143, 92, 50, 0.45);
+}
+
+.navbar-lang {
+  position: relative;
+}
+
+.navbar-lang__btn {
+  border-radius: 999px;
+  border: 1px solid rgba(79, 65, 54, 0.18);
+  background: rgba(255, 255, 255, 0.7);
+  color: #4f4136;
+  cursor: pointer;
+  padding: 8px 12px;
+  font-weight: 800;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+  white-space: nowrap;
+}
+
+.navbar-lang__btn:hover {
+  opacity: 0.96;
+  transform: translateY(-1px);
+}
+
+.navbar-lang__code {
+  font-weight: 900;
+  color: #714620;
+}
+
+.navbar-lang__menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 8px);
+  padding: 8px;
+  border-radius: 16px;
+  border: 1px solid rgba(79, 65, 54, 0.18);
+  background: rgba(255, 251, 246, 0.96);
+  backdrop-filter: blur(14px);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 110px;
+  z-index: 50;
+}
+
+.navbar-lang__item {
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: #4f4136;
+  cursor: pointer;
+  padding: 8px 10px;
+  font-weight: 900;
+  font-size: 12px;
+  transition: background 0.15s ease, transform 0.15s ease, opacity 0.15s ease;
+  text-align: left;
+}
+
+.navbar-lang__item:hover {
+  opacity: 0.96;
+  background: rgba(143, 92, 50, 0.08);
+}
+
+.navbar-lang__item--active {
+  background: rgba(143, 92, 50, 0.14);
+  border-color: rgba(143, 92, 50, 0.45);
+}
+
 .count-badge {
   min-width: 20px;
   height: 20px;
@@ -147,4 +252,97 @@
   .auth-pill {
     width: 100%;
   }
+
+  .navbar-side-actions {
+    width: 100%;
+    justify-content: center;
+    margin-left: 0;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-top: 6px;
+  }
+}
+
+html[data-theme="dark"] .navbar {
+  background: rgba(21, 16, 12, 0.68);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] .top-line {
+  color: rgba(233, 222, 209, 0.82);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+html[data-theme="dark"] .brand-block {
+  color: #fff8f2;
+}
+
+html[data-theme="dark"] .nav-links a {
+  color: rgba(233, 222, 209, 0.86);
+}
+
+html[data-theme="dark"] .nav-links a:hover,
+html[data-theme="dark"] .nav-links a.active {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fffaf6;
+}
+
+html[data-theme="dark"] .auth-user__label {
+  color: rgba(233, 222, 209, 0.68);
+}
+
+html[data-theme="dark"] .auth-pill {
+  background: #1f1711;
+  color: #fff8f3;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+
+html[data-theme="dark"] .auth-pill--dark {
+  background: rgba(255, 248, 243, 0.92);
+  color: #1f1711;
+  border-color: rgba(255, 248, 243, 0.35);
+}
+
+html[data-theme="dark"] .count-badge {
+  background: rgba(143, 92, 50, 0.28);
+  color: rgba(255, 214, 166, 0.92);
+}
+
+html[data-theme="dark"] .navbar-side-actions {
+  color: rgba(255, 248, 243, 0.92);
+}
+
+html[data-theme="dark"] .navbar-iconbtn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 248, 243, 0.95);
+}
+
+html[data-theme="dark"] .navbar-iconbtn--active {
+  background: rgba(255, 248, 243, 0.12);
+  border-color: rgba(255, 248, 243, 0.28);
+}
+
+html[data-theme="dark"] .navbar-lang__btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.18);
+  color: rgba(255, 248, 243, 0.95);
+}
+
+html[data-theme="dark"] .navbar-lang__code {
+  color: rgba(255, 214, 166, 0.95);
+}
+
+html[data-theme="dark"] .navbar-lang__menu {
+  background: rgba(18, 13, 10, 0.88);
+  border-color: rgba(255, 255, 255, 0.14);
+}
+
+html[data-theme="dark"] .navbar-lang__item {
+  color: rgba(255, 248, 243, 0.95);
+}
+
+html[data-theme="dark"] .navbar-lang__item--active {
+  background: rgba(255, 248, 243, 0.12);
+  border-color: rgba(255, 248, 243, 0.25);
 }

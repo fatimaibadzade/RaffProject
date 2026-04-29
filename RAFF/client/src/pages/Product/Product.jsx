@@ -1,11 +1,13 @@
 import { useMemo } from "react";
 import { useParams, useSearchParams } from "react-router-dom";
 import { useStore } from "../../context/StoreContext";
+import { useUi } from "../../context/UiContext";
 
 function Product() {
   const { id } = useParams();
   const [searchParams] = useSearchParams();
   const { products, addToCart, toggleWishlist, wishlist } = useStore();
+  const { t } = useUi();
 
   const requestedId = Number(id ?? searchParams.get("id") ?? products[0]?.id);
   const product = useMemo(
@@ -32,9 +34,9 @@ function Product() {
           <p>{product.description}</p>
 
           <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
-            <button onClick={() => addToCart(product.id)}>Add To Cart</button>
+            <button onClick={() => addToCart(product.id)}>{t("product.addToCart")}</button>
             <button onClick={() => toggleWishlist(product.id)}>
-              {isWishlisted ? "♥ In Wishlist" : "♡ Wishlist"}
+              {isWishlisted ? t("product.wishlist.in") : t("product.wishlist.out")}
             </button>
           </div>
         </div>

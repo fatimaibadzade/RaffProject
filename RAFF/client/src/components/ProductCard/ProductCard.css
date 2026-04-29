@@ -69,3 +69,34 @@
 .wishlist-heart:hover {
   transform: scale(1.06);
 }
+
+html[data-theme="dark"] .product-card {
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(21, 16, 12, 0.68);
+}
+
+html[data-theme="dark"] .product-card h3 {
+  color: rgba(255, 248, 243, 0.95);
+}
+
+html[data-theme="dark"] .product-card p {
+  color: rgba(255, 248, 243, 0.86);
+}
+
+html[data-theme="dark"] .card-actions button {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 248, 243, 0.06);
+  color: rgba(255, 248, 243, 0.95);
+}
+
+html[data-theme="dark"] .wishlist-heart {
+  border-color: rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.06);
+  color: rgba(255, 248, 243, 0.6);
+}
+
+html[data-theme="dark"] .wishlist-heart.active {
+  color: #ff6b6b;
+  border-color: rgba(239, 177, 177, 0.35);
+  background: rgba(255, 242, 242, 0.08);
+}

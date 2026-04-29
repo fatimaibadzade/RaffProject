@@ -48,3 +48,20 @@
     grid-template-columns: 1fr;
   }
 }
+
+html[data-theme="dark"] .footer {
+  background: rgba(21, 16, 12, 0.76);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme="dark"] .footer p {
+  color: rgba(233, 222, 209, 0.78);
+}
+
+html[data-theme="dark"] .footer-links strong {
+  color: rgba(255, 248, 243, 0.92);
+}
+
+html[data-theme="dark"] .footer-links span {
+  color: rgba(233, 222, 209, 0.7);
+}

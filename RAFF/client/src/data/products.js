@@ -5,7 +5,8 @@ export const PRODUCTS = [
     price: 90,
     image:
       "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80",
-    description: "Premium streetwear hoodie inspired by music and city life."
+    description: "Premium streetwear hoodie inspired by music and city life.",
+    sizes: ["xs", "s", "m"]
   },
   {
     id: 2,
@@ -13,7 +14,8 @@ export const PRODUCTS = [
     price: 55,
     image:
       "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&w=900&q=80",
-    description: "Soft cotton oversized tee with clean RAF graphics."
+    description: "Soft cotton oversized tee with clean RAF graphics.",
+    sizes: ["xs", "s", "m", "l"]
   },
   {
     id: 3,
@@ -21,7 +23,8 @@ export const PRODUCTS = [
     price: 35,
     image:
       "https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=900&q=80",
-    description: "Structured cap with minimal monochrome branding."
+    description: "Structured cap with minimal monochrome branding.",
+    sizes: ["s", "m", "l"]
   },
   {
     id: 4,
@@ -29,6 +32,7 @@ export const PRODUCTS = [
     price: 60,
     image:
       "https://images.unsplash.com/photo-1583743814966-8936f37f4678?auto=format&fit=crop&w=900&q=80",
-    description: "Statement tee from the capsule drop collection."
+    description: "Statement tee from the capsule drop collection.",
+    sizes: ["s", "m", "l"]
   }
 ];
