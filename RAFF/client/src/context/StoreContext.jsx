@@ -9,6 +9,38 @@ const WISHLIST_KEY = "raff_wishlist";
 const USER_KEY = "raff_user";
 const TOKEN_KEY = "raff_token";
 
+const SIZES_ORDER = ["xs", "s", "m", "l"];
+
+function resolveClosestSize(requestedSize, availableSizes) {
+  if (!Array.isArray(availableSizes) || availableSizes.length === 0) {
+    return "m";
+  }
+
+  const normalized = Array.from(new Set(availableSizes));
+  if (normalized.includes(requestedSize)) {
+    return requestedSize;
+  }
+
+  const safeRequested = requestedSize && SIZES_ORDER.includes(requestedSize) ? requestedSize : "m";
+  const requestedIndex = SIZES_ORDER.indexOf(safeRequested);
+  let best = normalized[0];
+  let bestScore = Number.POSITIVE_INFINITY;
+
+  for (const size of normalized) {
+    const idx = SIZES_ORDER.indexOf(size);
+    const score = Math.abs(idx - requestedIndex);
+    if (score < bestScore) {
+      bestScore = score;
+      best = size;
+    } else if (score === bestScore) {
+      // Tie-breaker: prefer the smaller size.
+      if (idx < SIZES_ORDER.indexOf(best)) best = size;
+    }
+  }
+
+  return best;
+}
+
 function readStorage(key, fallback) {
   try {
     const raw = localStorage.getItem(key);
@@ -23,7 +55,15 @@ function writeStorage(key, value) {
 }
 
 export function StoreProvider({ children }) {
-  const [cart, setCart] = useState(() => readStorage(CART_KEY, []));
+  const [cart, setCart] = useState(() => {
+    const initial = readStorage(CART_KEY, []);
+    return (Array.isArray(initial) ? initial : []).map((item) => {
+      const product = PRODUCTS.find((p) => p.id === item.productId);
+      const availableSizes = product?.sizes?.length ? product.sizes : SIZES_ORDER;
+      const mappedSize = resolveClosestSize(item.size ?? "m", availableSizes);
+      return { ...item, size: mappedSize };
+    });
+  });
   const [wishlist, setWishlist] = useState(() => readStorage(WISHLIST_KEY, []));
   const [currentUser, setCurrentUser] = useState(() => readStorage(USER_KEY, null));
   const [token, setToken] = useState(() => readStorage(TOKEN_KEY, ""));
@@ -61,25 +101,35 @@ export function StoreProvider({ children }) {
     restoreSession();
   }, [token]);
 
-  const addToCart = (productId) => {
+  const addToCart = (productId, requestedSize) => {
     setCart((prev) => {
-      const index = prev.findIndex((item) => item.productId === productId);
+      const product = PRODUCTS.find((p) => p.id === productId);
+      const availableSizes = product?.sizes?.length ? product.sizes : SIZES_ORDER;
+      const mappedSize = resolveClosestSize(requestedSize ?? "m", availableSizes);
+
+      const index = prev.findIndex(
+        (item) => item.productId === productId && item.size === mappedSize
+      );
       const next =
         index >= 0
           ? prev.map((item, i) =>
-              i === index ? { ...item, quantity: item.quantity + 1 } : item
+              i === index
+                ? { ...item, quantity: item.quantity + 1, size: mappedSize }
+                : item
             )
-          : [...prev, { productId, quantity: 1 }];
+          : [...prev, { productId, quantity: 1, size: mappedSize }];
       writeStorage(CART_KEY, next);
       return next;
     });
   };
 
-  const updateQuantity = (productId, quantity) => {
+  const updateQuantity = (productId, size, quantity) => {
     setCart((prev) => {
       const next = prev
         .map((item) =>
-          item.productId === productId ? { ...item, quantity } : item
+          item.productId === productId && item.size === size
+            ? { ...item, quantity, size }
+            : item
         )
         .filter((item) => item.quantity > 0);
       writeStorage(CART_KEY, next);
@@ -87,7 +137,7 @@ export function StoreProvider({ children }) {
     });
   };
 
-  const removeFromCart = (productId) => updateQuantity(productId, 0);
+  const removeFromCart = (productId, size) => updateQuantity(productId, size, 0);
 
   const clearCart = () => {
     writeStorage(CART_KEY, []);

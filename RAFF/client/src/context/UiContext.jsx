@@ -126,6 +126,10 @@ const dictionary = {
     "product.wishlist.in": "♥ In Wishlist",
     "product.wishlist.out": "♡ Wishlist",
 
+    "product.size.label": "Size",
+    "product.size.selected": "Selected: {size}",
+    "product.size.closest": "Size {requested} not available. Selected closest: {closest}.",
+
     "wishlist.h1": "Wishlist",
     "wishlist.empty": "Your favorite saved products.",
     "wishlist.open": "Open",
@@ -311,6 +315,11 @@ const dictionary = {
     "product.wishlist.in": "♥ В избранном",
     "product.wishlist.out": "♡ В избранное",
 
+    "product.size.label": "Размер",
+    "product.size.selected": "Выбран: {size}",
+    "product.size.closest":
+      "Размер {requested} недоступен. Выбран ближайший: {closest}.",
+
     "wishlist.h1": "Избранное",
     "wishlist.empty": "Ваши любимые сохранённые товары.",
     "wishlist.open": "Открыть",
@@ -491,6 +500,11 @@ const dictionary = {
     "product.wishlist.toggle": "İstək siyahısını dəyiş",
     "product.wishlist.in": "♥ İstək siyahısında",
     "product.wishlist.out": "♡ İstək siyahısında yoxdur",
+
+    "product.size.label": "Ölçü",
+    "product.size.selected": "Seçilən: {size}",
+    "product.size.closest":
+      "Ölçü {requested} mövcud deyil. Ən yaxın ölçü seçildi: {closest}.",
 
     "wishlist.h1": "İstək siyahısı",
     "wishlist.empty": "Saxladığınız sevimli məhsullar.",
