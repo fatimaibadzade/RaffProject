@@ -7,7 +7,7 @@ function Wishlist() {
   const navigate = useNavigate();
   const { products, wishlist, toggleWishlist, addToCart } = useStore();
   const { t } = useUi();
-  const items = products.filter((product) => wishlist.includes(product.id));
+  const items = products.filter((product) => wishlist.includes(product.id))
 
   return (
     <section className="wishlist-page">
